@@ -1,0 +1,4 @@
+**/mta_archives/
+**/node_modules/
+**/resources/
+.vscode

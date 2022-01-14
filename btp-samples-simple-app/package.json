@@ -1,0 +1,29 @@
+{
+    "name": "simple.app.mta",
+    "version": "0.0.1",
+    "private": true,
+    "sapuxLayer": "VENDOR",
+    "description": "A Fiori application.",
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "main": "webapp/index.html",
+    "scripts": {
+        "deploy": "fiori cfDeploy",
+        "build:mta": "rimraf resources mta_archives && mbt build --mtar archive",
+        "undeploy": "cf undeploy btp-samples-simple-app --delete-services --delete-service-keys"
+    },
+    "devDependencies": {
+        "@sap/ux-ui5-tooling": "1",
+        "rimraf": "3.0.2",
+        "mbt": "^1.0.15"
+    },
+    "ui5": {
+        "dependencies": [
+            "@sap/ux-ui5-tooling",
+            "mbt"
+        ]
+    }
+}
