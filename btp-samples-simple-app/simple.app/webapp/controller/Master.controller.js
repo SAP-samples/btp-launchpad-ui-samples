@@ -25,7 +25,7 @@ sap.ui.define([
 		 */
 		onInit : function () {
             // Calculate platform independent URL for image
-            this.byId("titleImage").setSrc(jQuery.sap.getResourcePath("btp/samples/simple/app/images/logo_ui5.png"));            
+            this.byId("titleImage").setSrc(sap.ui.require.toUrl("btp/samples/simple/app/images/logo_ui5.png"));            
 
 
 

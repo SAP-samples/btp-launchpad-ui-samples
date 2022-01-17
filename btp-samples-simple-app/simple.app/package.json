@@ -26,14 +26,12 @@
         "@ui5/logger": "^2.0.1",
         "@sap/ux-ui5-tooling": "1",
         "rimraf": "3.0.2",
-        "ui5-task-zipper": "^0.3.1",
-        "mbt": "^1.0.15"
+        "ui5-task-zipper": "^0.3.1"
     },
     "ui5": {
         "dependencies": [
             "@sap/ux-ui5-tooling",
-            "ui5-task-zipper",
-            "mbt"
+            "ui5-task-zipper"
         ]
     }
 }
