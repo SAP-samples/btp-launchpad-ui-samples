@@ -13,12 +13,7 @@
         "undeploy": "cf undeploy btp-samples-multiple-apps --delete-services --delete-service-keys"
     },
     "devDependencies": {
-        "@sap/ux-ui5-tooling": "1",
-        "rimraf": "3.0.2"
-    },
-    "ui5": {
-        "dependencies": [
-            "@sap/ux-ui5-tooling"
-        ]
+        "rimraf": "3.0.2",
+        "mbt": "^1.2.7"
     }
 }

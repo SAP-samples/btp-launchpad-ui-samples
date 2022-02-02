@@ -14,8 +14,8 @@
     },
     {
         "source": "^/index.html",
-        "target": "index.html",
-        "service": "html5-apps-repo-rt"
+        "service": "html5-apps-repo-rt",
+        "cacheControl": "no-cache, no-store, must-revalidate"
     },  
     {
         "source": "^/logout-page.html$",
