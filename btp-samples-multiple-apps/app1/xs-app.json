@@ -1,10 +1,6 @@
 {
   "welcomeFile": "/index.html",
   "authenticationMethod": "route",
-  "logout": {
-    "logoutEndpoint": "/logout",
-    "logoutPage": "/logout-page.html"
-  },
   "routes": [
     {
       "source": "^/northwind/(.*)$",
@@ -13,15 +9,17 @@
       "destination": "northwind"
     },
     {
-        "source": "^/index.html",
-        "target": "index.html",
-        "service": "html5-apps-repo-rt"
-    },  
+      "source": "^/resources/(.*)$",
+      "target": "/resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
+    },
     {
-        "source": "^/logout-page.html$",
-        "service": "html5-apps-repo-rt",
-        "authenticationType": "none"
-    },  
+      "source": "^/test-resources/(.*)$",
+      "target": "/test-resources/$1",
+      "authenticationType": "none",
+      "destination": "ui5"
+    },
     {
       "source": "^(.*)$",
       "target": "$1",

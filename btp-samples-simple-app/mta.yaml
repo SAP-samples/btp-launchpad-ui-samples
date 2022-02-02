@@ -1,6 +1,6 @@
 _schema-version: "3.2"
 ID: btp-samples-simple-app
-description: A Fiori application.
+description: BTP Launchpad Samples with a simple Apps
 version: 0.0.1
 modules:
 - name: btp-samples-simple-app-dest-content
