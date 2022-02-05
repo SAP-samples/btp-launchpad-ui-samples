@@ -72,6 +72,14 @@
                 "btp.samples.multiple.apps.lib": {}
             }
         },
+        "componentUsages": {
+            "resuse": {
+                "name": "btp.samples.multiple.apps.lib.comp.reuse",
+                "settings": {},
+                "componentData": {},
+                "lazy": false
+            }
+        },
         "contentDensities": {
             "compact": true,
             "cozy": true

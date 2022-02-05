@@ -19,8 +19,9 @@
 			data-sap-ui-frameOptions="trusted">
 	</script>
     <script>
-        let destinationGuid = window.location.pathname.split(".")[0];
-        jQuery.sap.registerModulePath("btp.samples.multiple.apps.lib", destinationGuid + ".btpsamplesmultipleapps.btpsamplesmultipleappslib");
+        let parts = window.location.pathname.split('/');
+        let destinationGuid = (parts.length > 2) ?  parts[1].split(".")[0] + "." : "";
+        sap.ui.loader.config({paths:{"btp/samples/multiple/apps/lib": `/${destinationGuid}btpsamplesmultipleapps.btpsamplesmultipleappslib`}});
     </script>
 </head>
 <body class="sapUiBody">

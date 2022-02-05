@@ -4,6 +4,12 @@ metadata:
 type: application
 server:
   customMiddleware:
+  - name: fiori-tools-servestatic
+    afterMiddleware: compression
+    configuration:
+      paths:
+        - path: /btpsamplesmultipleapps.btpsamplesmultipleappslib
+          src: "../lib/src/btp/samples/multiple/apps/lib"
   - name: fiori-tools-proxy
     afterMiddleware: compression
     configuration:

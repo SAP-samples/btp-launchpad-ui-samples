@@ -2,7 +2,8 @@
 	controllerName="btp.samples.multiple.apps.app2.controller.Master"
 	xmlns="sap.m"
 	xmlns:semantic="sap.f.semantic"
-	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
     xmlns:lib="btp.samples.multiple.apps.lib">
 
 	<semantic:SemanticPage
@@ -19,6 +20,7 @@
             <Image id="titleImage" />
             <!-- Reuse control from shared lib -->
             <lib:controls.Reuse text="App1" />
+            <core:ComponentContainer usage="resuse" manifest="true" async="true" />
         </semantic:titleContent>
 		<semantic:content>
 			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->

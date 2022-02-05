@@ -1,23 +1,30 @@
 {
     "_version": "1.32.0",
     "sap.app": {
-        "id": "btp.samples.multiple.apps.lib",
-        "type": "library",
+        "id": "btp.samples.multiple.apps.lib.comp.reuse",
+        "type": "component",
         "i18n": "i18n/i18n.properties",
-        "title": "{{title}}",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
         "applicationVersion": {
             "version": "1.0.0"
         },
-        "embeds":["comp/reuse"]
+        "embeddedBy": "../../"
     },
 
     "sap.ui5": {
+        "rootView": {
+            "viewName": "btp.samples.multiple.apps.lib.comp.reuse.view.Main",
+            "type": "XML",
+            "async": true,
+            "id": "main"
+        },
         "dependencies": {
             "minUI5Version": "1.95.0",
             "libs": {
                 "sap.ui.core": {},
                 "sap.m": {},
-                "sap.f": {}
+                "btp.samples.multiple.apps.lib": {}
             }
         }
     },
