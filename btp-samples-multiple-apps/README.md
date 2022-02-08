@@ -1,5 +1,5 @@
 # BTPSamples
-This repository contains the first sample project which is discussed in my blog https://blogs.sap.com/2022/01/14/designing-ui5-apps-for-sap-launchpad-service-part-1/
+This repository contains the 2nd sample project which is discussed in my blog https://blogs.sap.com/2022/02/08/designing-ui5-apps-for-sap-launchpad-service-part-2/
 
 To deploy this sample to your space
 - Login to cf cli
