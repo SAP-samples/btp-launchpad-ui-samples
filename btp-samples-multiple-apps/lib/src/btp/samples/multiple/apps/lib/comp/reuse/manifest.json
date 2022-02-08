@@ -27,9 +27,5 @@
                 "btp.samples.multiple.apps.lib": {}
             }
         }
-    },
-    "sap.cloud": {
-        "public": true,
-        "service": "btp.samples.multiple.apps"
     }
 }

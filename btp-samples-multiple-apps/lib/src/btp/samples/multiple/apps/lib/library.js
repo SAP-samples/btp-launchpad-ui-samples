@@ -29,7 +29,7 @@ sap.ui.define(["sap/ui/core/library"], // library dependency
 			types: [],
 			interfaces: [],
 			controls: [
-				"btp.samples.multiple.apps.lib.controls.Example"
+				"btp.samples.multiple.apps.lib.controls.Reuse"
 			],
 			elements: []
 		});

@@ -19,7 +19,7 @@
         <semantic:titleContent>
             <Image id="titleImage" />
             <!-- Reuse control from shared lib -->
-            <lib:controls.Reuse text="App1" />
+            <lib:controls.Reuse text="App2" />
             <core:ComponentContainer usage="resuse" manifest="true" async="true" />
         </semantic:titleContent>
 		<semantic:content>
