@@ -22,12 +22,12 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "btp-samples-simple-app-inbound": {
+                "btp-samples-multiple-app1": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "simpleApp",
+                    "semanticObject": "multipleApp1",
                     "action": "display",
                     "icon": ""
                 }
