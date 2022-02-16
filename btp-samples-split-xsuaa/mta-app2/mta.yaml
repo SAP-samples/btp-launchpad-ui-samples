@@ -1,0 +1,80 @@
+_schema-version: "3.2"
+ID: btp-samples-split-xsuaa-app2
+description: BTP Launchpad Samples split to MTAs - App2
+version: 0.0.1
+modules:
+- name: btp-samples-split-xsuaa-app2-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: btp-samples-split-xsuaa-shared-dest-srv
+    parameters:
+      content-target: true
+  - name: btp-samples-split-xsuaa-app2-repo-host
+    parameters:
+      service-key:
+        name: btp-samples-split-xsuaa-app2-repo-host-key
+  - name: btp-samples-split-xsuaa-app2-uaa
+    parameters:
+      service-key:
+        name: btp-samples-split-xsuaa-app2-uaa-key
+  parameters:
+    content:
+      instance:
+        destinations:
+        - Name: btp-samples-split-xsuaa-app2_repo_host
+          ServiceInstanceName: btp-samples-split-xsuaa-app2-html5-srv
+          ServiceKeyName: btp-samples-split-xsuaa-app2-repo-host-key
+          sap.cloud.service: btp.samples.split.xsuaa.app2
+        - Name: btp-samples-split-xsuaa-app2_uaa
+          ServiceInstanceName: btp-samples-split-xsuaa-app2-xsuaa-srv
+          ServiceKeyName: btp-samples-split-xsuaa-app2-uaa-key
+          sap.cloud.service: btp.samples.split.xsuaa.app2
+          Authentication: OAuth2UserTokenExchange
+        existing_destinations_policy: update
+  build-parameters:
+    no-source: true
+- name: btp-samples-split-xsuaa-app2-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: btp-samples-split-xsuaa-app2-repo-host
+    parameters:
+      content-target: true
+  build-parameters:
+    build-result: resources
+    requires:
+    - name: btpsamplessplitxsuaaapp2
+      artifacts:
+      - btpsamplessplitxsuaaapp2.zip
+      target-path: resources/
+- name: btpsamplessplitxsuaaapp2
+  type: html5
+  path: app2
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+- name: btp-samples-split-xsuaa-shared-dest-srv
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: btp-samples-split-xsuaa-shared-dest-srv
+- name: btp-samples-split-xsuaa-app2-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+    service-name: btp-samples-split-xsuaa-app2-xsuaa-srv
+- name: btp-samples-split-xsuaa-app2-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: btp-samples-split-xsuaa-app2-html5-srv
+    service-plan: app-host
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

@@ -1,0 +1,28 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "btp.samples.split.xsuaa.lib",
+        "type": "library",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{title}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "embeds":["comp/reuse"]
+    },
+
+    "sap.ui5": {
+        "dependencies": {
+            "minUI5Version": "1.95.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.f": {}
+            }
+        }
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "btp.samples.split.xsuaa.shared"
+    }
+}

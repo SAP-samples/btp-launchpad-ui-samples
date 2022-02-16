@@ -1,0 +1,29 @@
+{
+    "name": "btp.samples.split.mta.lib",
+    "version": "0.0.1",
+    "private": true,
+    "sapuxLayer": "VENDOR",
+    "description": "A shared library",
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "main": "webapp/index.html",
+    "scripts": {
+        "build": "ui5 build -a --clean-dest",
+        "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml"
+    },
+    "devDependencies": {
+        "@ui5/cli": "^2.14.4",
+        "@ui5/fs": "^2.0.6",
+        "@ui5/logger": "^2.0.1",
+        "rimraf": "3.0.2",
+        "ui5-task-zipper": "^0.4.7"
+    },
+    "ui5": {
+        "dependencies": [
+            "ui5-task-zipper"
+        ]
+    }
+}

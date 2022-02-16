@@ -1,0 +1,31 @@
+{
+    "_version": "1.32.0",
+    "sap.app": {
+        "id": "btp.samples.split.xsuaa.lib.comp.reuse",
+        "type": "component",
+        "i18n": "i18n/i18n.properties",
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "embeddedBy": "../../"
+    },
+
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "btp.samples.split.xsuaa.lib.comp.reuse.view.Main",
+            "type": "XML",
+            "async": true,
+            "id": "main"
+        },
+        "dependencies": {
+            "minUI5Version": "1.95.0",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "btp.samples.split.xsuaa.lib": {}
+            }
+        }
+    }
+}

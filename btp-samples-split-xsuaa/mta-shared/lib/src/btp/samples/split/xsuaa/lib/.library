@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<library xmlns="http://www.sap.com/sap.ui.library.xsd">
+    <name>btp.samples.split.xsuaa.lib</name>
+    <vendor>SAP SE</vendor>
+    <version>1.0.0</version>
+    <copyright>${copyright}</copyright>
+    <title>>title</title>
+    <documentation></documentation>
+	<dependencies>
+		<dependency>
+			<libraryName>sap.ui.core</libraryName>
+		</dependency>
+	</dependencies>
+</library>

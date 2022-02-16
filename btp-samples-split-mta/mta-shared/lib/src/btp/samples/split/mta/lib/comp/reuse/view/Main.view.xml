@@ -1,0 +1,9 @@
+<mvc:View
+	controllerName="btp.samples.split.mta.lib.comp.reuse.controller.Main"
+	displayBlock="true"
+	height="100%"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	
+    <Button text="Reuse Component"></Button>
+</mvc:View>
