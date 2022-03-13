@@ -12,12 +12,12 @@
     "main": "webapp/index.html",
     "scripts": {
         "start": "fiori run --open 'index.html'",
-        "start-local": "fiori run --config ./ui5-local.yaml --open 'test/flpSandboxMockServer.html'",
+        "start-local": "fiori run --config ./ui5-local.yaml --open 'test/flpSandbox.html'",
         "start-noflp": "fiori run --open 'index.html'",
         "build": "ui5 build -a --clean-dest",
         "unit-tests": "fiori run --open test/unit/unitTests.qunit.html",
         "int-tests": "fiori run --open test/integration/opaTests.qunit.html",
-        "start-mock": "fiori run --open 'test/flpSandboxMockServer.html'",
+        "start-mock": "fiori run --open 'test/flpSandbox.html'",
         "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml"
     },
     "devDependencies": {
