@@ -9,6 +9,6 @@
     },
     "devDependencies": {
         "rimraf": "3.0.2",
-        "mbt": "^1.2.7"
+        "mbt": "^1.2.18"
     }
 }
