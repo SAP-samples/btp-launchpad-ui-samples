@@ -8,6 +8,7 @@ This repository contains the sample projects which are discussed in blog [Design
 - A subscription of SAP Launchpad Service
 - A Node.js installation
 - [CF CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+- MBT build tool requires "make", which is only available on Linux or in SAP Business Application Studio. When running on Windows you need to install "make" as described [here](https://github.com/SAP/cloud-mta-build-tool/blob/master/docs/docs/makefile.md)
 - Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) from [SAP Development Tools](https://tools.hana.ondemand.com/#cloud)
 
 # Download and Installation
