@@ -13,7 +13,7 @@ builder:
       - "/localService/**"
   customTasks:
   - name: ui5-task-zipper
-    afterTask: minify
+    afterTask: buildThemes
     configuration:
       archiveName: btpsamplessplitxsuaalib
       additionalFiles:
