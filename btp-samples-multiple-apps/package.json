@@ -14,7 +14,7 @@
     },
     "devDependencies": {
         "rimraf": "3.0.2",
-        "mbt": "^1.2.18",
+        "mbt": "^1.2.25",
         "@sap/ux-ui5-tooling": "^1.8.4"
     }
 }
