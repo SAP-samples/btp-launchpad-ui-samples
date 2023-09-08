@@ -1,5 +1,5 @@
 # yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
-specVersion: '2.4'
+specVersion: '3.0'
 metadata:
   name: btp.samples.split.mta.app2
 type: application
