@@ -9,7 +9,7 @@ server:
     configuration:
       paths:
         - path: /btpsamplessplitxsuaashared.btpsamplessplitxsuaalib
-          src: "../../mta-shared/lib/src/btp/samples/split/xsuaa/lib"
+          src: "../../mta-shared/lib/src"
   - name: fiori-tools-proxy
     afterMiddleware: compression
     configuration:

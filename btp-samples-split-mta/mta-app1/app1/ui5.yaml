@@ -9,7 +9,7 @@ server:
     configuration:
       paths:
         - path: /btpsamplessplitmta.btpsamplessplitmtalib
-          src: "../../mta-shared/lib/src/btp/samples/split/mta/lib"
+          src: "../../mta-shared/lib/src"
   - name: fiori-tools-proxy
     afterMiddleware: compression
     configuration:

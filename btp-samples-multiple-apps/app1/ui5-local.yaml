@@ -22,7 +22,7 @@ server:
     configuration:
       paths:
         - path: /btpsamplesmultipleapps.btpsamplesmultipleappslib
-          src: "../lib/src/btp/samples/multiple/apps/lib"
+          src: "../lib/src"
   - name: fiori-tools-proxy
     afterMiddleware: compression
     configuration:
