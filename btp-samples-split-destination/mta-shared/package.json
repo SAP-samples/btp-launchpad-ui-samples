@@ -1,0 +1,19 @@
+{
+    "name": "split.destination.shared",
+    "version": "0.0.1",
+    "private": true,
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "scripts": {
+        "deploy": "fiori cfDeploy",
+        "build:mta": "rimraf resources mta_archives && mbt build --mtar archive",
+        "undeploy": "cf undeploy btp-samples-split-destination-shared --delete-services --delete-service-keys"
+    },
+    "devDependencies": {
+        "rimraf": "5.0.5",
+        "mbt": "^1.2.27"
+    }
+}
