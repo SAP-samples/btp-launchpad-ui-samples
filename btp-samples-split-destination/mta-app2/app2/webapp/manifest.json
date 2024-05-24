@@ -19,7 +19,11 @@
                     "odataVersion": "2.0",
                     "localUri": "localService/metadata.xml"
                 }
-            }
+            },
+            "info": {
+				"uri": "api/documents/info",
+				"type": "JSON"
+			}
         },
         "crossNavigation": {
             "inbounds": {
@@ -91,6 +95,10 @@
                 "settings": {
                     "bundleName": "btp.samples.split.destination.app2.i18n.i18n"
                 }
+            },
+            "info": {
+                "type": "sap.ui.model.json.JSONModel",
+				"dataSource": "info"
             },
             "": {
                 "dataSource": "mainService",

@@ -3,7 +3,7 @@
     "sap.app": {
         "id": "btp.samples.split.destination.lib",
         "type": "library",
-        "i18n": "i18n/i18n.properties",
+        "i18n": "messagebundle.properties",
         "title": "{{title}}",
         "applicationVersion": {
             "version": "1.0.0"

@@ -21,6 +21,13 @@
       "destination": "ui5"
     },
     {
+      "source": "^/api/documents/info$",
+      "target": "info",
+      "authenticationType": "xsuaa",
+      "service": "btp.samples.consumed.service",
+      "endpoint": "api"
+    },
+    {
       "source": "^(.*)$",
       "target": "$1",
       "service": "html5-apps-repo-rt",

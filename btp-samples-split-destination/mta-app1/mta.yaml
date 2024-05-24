@@ -25,6 +25,10 @@ modules:
     parameters:
       service-key:
         name: btp-samples-split-destination-shared-uaa-key
+  - name: btp-samples-split-destination-app1-consumed-srv
+    parameters:
+      service-key:
+        name: btp-samples-split-destination-app1-consumed-srv-key
   parameters:
     content:
       instance:
@@ -46,6 +50,10 @@ modules:
           ServiceInstanceName: btp-samples-split-destination-shared-xsuaa-srv
           ServiceKeyName: btp-samples-split-destination-shared-uaa-key
           sap.cloud.service: btp.samples.split.destination.shared
+          Authentication: OAuth2UserTokenExchange
+        - Name: btp-samples-split-destination-app1-consumed-srv
+          ServiceInstanceName: btp-samples-split-destination-app1-consumed-srv
+          ServiceKeyName: btp-samples-split-destination-app1-consumed-srv-key
           Authentication: OAuth2UserTokenExchange
         existing_destinations_policy: update
   build-parameters:
@@ -106,6 +114,12 @@ resources:
     service: html5-apps-repo
     service-name: btp-samples-split-destination-app1-html5-srv
     service-plan: app-host
+- name: btp-samples-split-destination-app1-consumed-srv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: btp-samples-consumed-service
+    service-name: btp-samples-split-destination-app1-consumed-srv
+    service-plan: document-service
 - name: btp-samples-split-destination-shared-uaa
   type: org.cloudfoundry.existing-service
   parameters:

@@ -2,6 +2,7 @@
 	controllerName="btp.samples.split.destination.app1.controller.Master"
 	xmlns="sap.m"
 	xmlns:semantic="sap.f.semantic"
+	xmlns:core="sap.ui.core"
 	xmlns:mvc="sap.ui.core.mvc"
     xmlns:lib="btp.samples.split.destination.lib">
 
@@ -18,7 +19,8 @@
         <semantic:titleContent>
             <Image id="titleImage" />
             <!-- Reuse control from shared lib -->
-            <lib:controls.Reuse text="App1" />
+            <lib:controls.Reuse text="{info>/clientId}" />			
+            <core:ComponentContainer usage="resuse" manifest="true" async="true" />
         </semantic:titleContent>
 		<semantic:content>
 			<!-- For client side filtering add this to the items attribute: parameters: {operationMode: 'Client'}}" -->

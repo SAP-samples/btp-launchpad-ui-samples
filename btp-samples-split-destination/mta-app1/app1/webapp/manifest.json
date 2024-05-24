@@ -19,7 +19,11 @@
                     "odataVersion": "2.0",
                     "localUri": "localService/metadata.xml"
                 }
-            }
+            },
+            "info": {
+				"uri": "api/documents/info",
+				"type": "JSON"
+			}
         },
         "crossNavigation": {
             "inbounds": {
@@ -73,6 +77,14 @@
                 "btp.samples.split.destination.lib": {}
             }
         },
+        "componentUsages": {
+            "resuse": {
+                "name": "btp.samples.split.destination.lib.comp.reuse",
+                "settings": {},
+                "componentData": {},
+                "lazy": false
+            }
+        },
         "contentDensities": {
             "compact": true,
             "cozy": true
@@ -83,6 +95,10 @@
                 "settings": {
                     "bundleName": "btp.samples.split.destination.app1.i18n.i18n"
                 }
+            },
+            "info": {
+                "type": "sap.ui.model.json.JSONModel",
+				"dataSource": "info"
             },
             "": {
                 "dataSource": "mainService",
