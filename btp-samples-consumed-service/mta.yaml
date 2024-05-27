@@ -1,0 +1,56 @@
+_schema-version: "3.2"
+ID: btp-samples-consumed-service
+version: 0.0.1
+modules:
+- name: service
+  type: nodejs
+  path: service/
+  requires:
+    - name: btp-samples-consumed-service-xsuaa
+  parameters:
+    app-name: btp-samples-consumed-service
+    host: btp-samples-consumed-service
+    buildpack: nodejs_buildpack
+    memory: 512M
+    disk_quota: 512M
+- name: servicebroker
+  type: nodejs
+  path: broker/
+  requires:
+    - name: btp-samples-consumed-service-xsuaa
+  parameters:
+    app-name: btp-samples-consumed-service-broker
+    host: btp-samples-consumed-service-broker
+    buildpack: nodejs_buildpack
+    memory: 512M
+    disk_quota: 512M
+  properties:
+      SBF_SERVICE_CONFIG: >
+        {
+          "btp-samples-consumed-service": {
+            "extend_credentials": {
+              "shared": {
+                "vendor": "SAP",
+                "sap.cloud.service": "btp.samples.consumed.service",
+                "grant_type": "user_token",
+                "endpoints": {
+                  "api": "https://btp-samples-consumed-service.${default-domain}/api"
+                }
+              }
+            }
+          }
+        }
+      SBF_BROKER_CREDENTIALS: >
+        {
+          "brokerUser": "business_service_broker_password!"
+        }
+      SBF_ENABLE_AUDITLOG: false
+resources:
+  - name: btp-samples-consumed-service-xsuaa
+    type: com.sap.xs.uaa-broker
+    parameters:
+      service: xsuaa
+      config:
+        xsappname: 'btp-samples-consumed-service'
+        tenant-mode: dedicated
+

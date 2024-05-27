@@ -1,0 +1,17 @@
+{
+    "services": [
+      {
+        "name": "btp-samples-consumed-service",
+        "id": "da1de010-8c61-4cf5-9cfb-f0bf5a78542e",
+        "description": "BTP Samples consumed service",
+        "bindable": true,
+        "plans": [
+          {
+            "id": "ece8a622-b37e-4866-9295-da92ff2d3947",
+            "name": "document-service",
+            "description": "Simple service plan"
+          }
+        ]
+      }
+    ]
+  }

@@ -1,0 +1,17 @@
+{
+    "name": "btp-samples-consumed-service",
+    "version": "1.0.0",
+    "description": "Consumed sample service",
+    "scripts": {
+      "start": "node index.js"
+    },
+    "dependencies": {
+      "express": "^4.19.2",
+      "@sap/xsenv": "^3.1.0",
+      "@sap/xssec": "^3.0.10",
+      "passport": "^0.4.1"    
+    },
+    "engines": {
+      "node": "^20"
+    }
+  }

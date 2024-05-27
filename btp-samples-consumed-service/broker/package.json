@@ -1,0 +1,14 @@
+{
+    "name": "btp-samples-consumed-service-broker",
+    "version": "1.0.0",
+    "description": "Broker for consumed sample service",
+    "scripts": {
+      "start": "start-broker"
+    },
+    "dependencies": {
+      "@sap/sbf": "^6.7.0"
+    },
+    "engines": {
+      "node": "^20"
+    }
+  }
