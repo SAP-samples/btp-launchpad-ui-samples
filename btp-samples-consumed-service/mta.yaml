@@ -42,7 +42,7 @@ modules:
         }
       SBF_BROKER_CREDENTIALS: >
         {
-          "brokerUser": "business_service_broker_password!"
+          "brokerUser": "business_service_broker_password"
         }
       SBF_ENABLE_AUDITLOG: false
 resources:

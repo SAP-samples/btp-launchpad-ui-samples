@@ -12,6 +12,14 @@ This repository contains the sample projects which are discussed in blog [Design
 - Multi-Target Application Cloud Foundry CLI Plugin (CF MTA Plugin) from [SAP Development Tools](https://tools.hana.ondemand.com/#cloud)
 
 # Download and Installation
+To deploy the consumed sample service (required for split destination scenario):
+- Login to cf cli
+- Go to a btp-samples-consumed-service directory
+- npm install
+- npm run build:mta
+- npm run deploy
+- cf create-service-broker btp-samples-consumed-service brokerUser business_service_broker_password https://btp-samples-consumed-service-broker.cfapps.<Your Landscape domain>.hana.ondemand.com --space-scoped 
+
 To deploy one of the samples to your space:
 - Login to cf cli
 - Go to a samples directory
