@@ -27,12 +27,12 @@
         },
         "crossNavigation": {
             "inbounds": {
-                "btp-samples-split-destination-app1-inbound": {
+                "btp-samples-split-destination-app2-inbound": {
                     "signature": {
                         "parameters": {},
                         "additionalParameters": "allowed"
                     },
-                    "semanticObject": "splitdestinationApp1",
+                    "semanticObject": "splitdestinationApp2",
                     "action": "display",
                     "icon": ""
                 }
