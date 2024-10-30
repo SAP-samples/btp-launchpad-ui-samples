@@ -1,0 +1,14 @@
+{
+    "name": "cdm.simple.app.mta",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "deploy": "fiori cfDeploy",
+        "build:mta": "rimraf resources mta_archives && mbt build --mtar archive",
+        "undeploy": "cf undeploy btp-samples-cdm-simple-app --delete-services --delete-service-keys"
+    },
+    "devDependencies": {
+        "rimraf": "5.0.5",
+        "mbt": "^1.2.27"
+    }
+}

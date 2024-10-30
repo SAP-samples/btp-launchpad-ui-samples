@@ -1,0 +1,75 @@
+[
+    {
+      "_version": "3.0",
+      "identification": {
+        "entityType": "catalog",
+        "id": "btp.samples.cdm",
+        "title": "{{title}}"
+      },
+      "payload": {
+        "viz": [
+          {
+            "appId": "btp.samples.cdm.simple.app",
+            "vizId": "btp-samples-cdm-simple-app-inbound"
+          }
+        ]
+      },
+      "texts": [
+        {
+          "locale": "",
+          "textDictionary": {
+            "title": "BTP Samples - Simple App"
+          }
+        }
+      ]
+    },
+    {
+      "_version": "3.0",
+      "identification": {
+        "entityType": "group",
+        "id": "btp.samples.cdm.simple.app",
+        "title": "{{title}}"
+      },
+      "payload": {
+        "viz": [
+          {
+            "appId": "btp.samples.cdm.simple.app",
+            "vizId": "btp-samples-cdm-simple-app-inbound"
+          }
+        ]
+      },
+      "texts": [
+        {
+          "locale": "",
+          "textDictionary": {
+            "title": "BTP Samples - Simple App"
+          }
+        }
+      ]
+    },
+    {
+      "_version": "3.0",
+      "identification": {
+        "entityType": "role",
+        "id": "btp.samples.cdm",
+        "title": "BTP Samples - Simple App"
+      },
+      "payload": {
+        "apps": [
+          {
+            "id": "btp.samples.cdm.simple.app"
+          }
+        ],
+        "catalogs": [
+          {
+            "id": "btp.samples.cdm"
+          }
+        ],
+        "groups": [
+          {
+            "id": "btp.samples.cdm.simple.app"
+          }
+        ]
+      }
+    }
+  ]

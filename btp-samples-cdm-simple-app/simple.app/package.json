@@ -1,0 +1,37 @@
+{
+    "name": "btp.samples.cdm.simple.app",
+    "version": "0.0.1",
+    "private": true,
+    "sapuxLayer": "VENDOR",
+    "description": "A Fiori application.",
+    "keywords": [
+        "ui5",
+        "openui5",
+        "sapui5"
+    ],
+    "main": "webapp/index.html",
+    "scripts": {
+        "start": "fiori run --open 'index.html'",
+        "start-local": "fiori run --config ./ui5-local.yaml --open 'test/flpSandbox.html'",
+        "start-noflp": "fiori run --open 'index.html'",
+        "build": "ui5 build -a --clean-dest",
+        "unit-tests": "fiori run --open test/unit/unitTests.qunit.html",
+        "int-tests": "fiori run --open test/integration/opaTests.qunit.html",
+        "start-mock": "fiori run --open 'test/flpSandbox.html'",
+        "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml"
+    },
+    "devDependencies": {
+        "@sap/ux-ui5-tooling": "^1.12.1",
+        "@ui5/cli": "^3.8.0",
+        "@ui5/fs": "^3.0.5",
+        "@ui5/logger": "^3.0.0",
+        "rimraf": "5.0.5",
+        "ui5-task-zipper": "^3.1.1"
+    },
+    "ui5": {
+        "dependencies": [
+            "@sap/ux-ui5-tooling",
+            "ui5-task-zipper"
+        ]
+    }
+}

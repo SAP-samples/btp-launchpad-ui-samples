@@ -1,0 +1,120 @@
+_schema-version: "3.2"
+ID: btp-samples-cdm-simple-app
+description: BTP Launchpad CDM Samples with a simple Apps
+version: 0.0.1
+modules:
+# Destination deployer module - create CDM DT destination ##########
+- name: btp-samples-cdm-simple-app-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: btp-samples-cdm-simple-app-dest-srv
+    parameters:
+      content-target: true
+  - name: btp-samples-cdm-simple-app-repo-runtime
+    parameters:
+      service-key:
+        name: btp-samples-cdm-simple-app-repo-runtime-key
+  parameters:
+    content:
+      subaccount:
+        destinations:
+        - Name: btp-samples-cdm-simple-app-dt
+          ServiceInstanceName: btp-samples-cdm-simple-app-html5-rt-srv
+          ServiceKeyName: btp-samples-cdm-simple-app-repo-runtime-key
+          URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/btp.samples.cdm.simple.app
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+#######################################################################
+
+# HTML5 app deployer module - store xsuaa, backend destinations
+- name: btp-samples-cdm-simple-app-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: btp-samples-cdm-simple-app-repo-host
+    parameters:
+      content-target: true
+  - name: btp-samples-cdm-simple-app-uaa
+  parameters:
+    config:
+      destinations:
+      - name: northwind
+        url: https://services.odata.org/V3/Northwind/Northwind.svc/
+  build-parameters:
+    builder: custom
+    commands:
+        - mkdir -p resources
+        - cp workzone/cdm.json resources/cdm.json
+    build-result: resources
+    requires:
+    - name: btpsamplescdmsimpleapp
+      artifacts:
+      - btpsamplescdmsimpleapp.zip
+      target-path: resources/
+########################################################################
+
+# App Module ###########################################################
+- name: btpsamplescdmsimpleapp
+  type: html5
+  path: simple.app
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+
+resources:
+# HTML5 app-host resource - upload html5 apps #############################
+- name: btp-samples-cdm-simple-app-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: btp-samples-cdm-simple-app-html5-srv
+    service-plan: app-host
+###########################################################################
+
+# XSUAA Instance ##########################################################
+- name: btp-samples-cdm-simple-app-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+    service-name: btp-samples-cdm-simple-app-xsuaa-srv
+###########################################################################
+
+# Destination resource for CDM RT destination #############################
+- name: btp-samples-cdm-simple-app-dest-srv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      init_data:
+        subaccount:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: btp-samples-cdm-simple-app-rt
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://{YOURDOMAIN}.launchpad.${default-domain}
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: btp-samples-cdm-simple-app-dest-srv
+    service-plan: lite
+
+###########################################################################
+
+# HTML5 app-runtime resource for CDM DT destination ######################
+- name: btp-samples-cdm-simple-app-repo-runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: btp-samples-cdm-simple-app-html5-rt-srv
+    service-plan: app-runtime
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+

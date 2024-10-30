@@ -14,7 +14,7 @@ This repository contains the sample projects which are discussed in blog [Design
 # Download and Installation
 To deploy the consumed sample service (required for split destination scenario):
 - Login to cf cli
-- Go to a btp-samples-consumed-service directory
+- Go to the btp-samples-consumed-service directory
 - npm install
 - npm run build:mta
 - npm run deploy
@@ -23,6 +23,7 @@ To deploy the consumed sample service (required for split destination scenario):
 To deploy one of the samples to your space:
 - Login to cf cli
 - Go to a samples directory
+- If the mta.yaml file contains a placeholder {YOURDOMAIN}, replace it with the subdomain of the target subaccount
 - npm install
 - npm run build:mta
 - npm run deploy
