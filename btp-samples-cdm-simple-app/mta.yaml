@@ -3,31 +3,7 @@ ID: btp-samples-cdm-simple-app
 description: BTP Launchpad CDM Samples with a simple Apps
 version: 0.0.1
 modules:
-# Destination deployer module - create CDM DT destination ##########
-- name: btp-samples-cdm-simple-app-dest-content
-  type: com.sap.application.content
-  requires:
-  - name: btp-samples-cdm-simple-app-dest-srv
-    parameters:
-      content-target: true
-  - name: btp-samples-cdm-simple-app-repo-runtime
-    parameters:
-      service-key:
-        name: btp-samples-cdm-simple-app-repo-runtime-key
-  parameters:
-    content:
-      subaccount:
-        destinations:
-        - Name: btp-samples-cdm-simple-app-dt
-          ServiceInstanceName: btp-samples-cdm-simple-app-html5-rt-srv
-          ServiceKeyName: btp-samples-cdm-simple-app-repo-runtime-key
-          URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/btp.samples.cdm.simple.app
-        existing_destinations_policy: ignore
-  build-parameters:
-    no-source: true
-#######################################################################
-
-# HTML5 app deployer module - store xsuaa, backend destinations
+# HTML5 app deployer module - store xsuaa, backend destinations ###########
 - name: btp-samples-cdm-simple-app-app-content
   type: com.sap.application.content
   path: .
@@ -52,9 +28,9 @@ modules:
       artifacts:
       - btpsamplescdmsimpleapp.zip
       target-path: resources/
-########################################################################
+###########################################################################
 
-# App Module ###########################################################
+# App Module ##############################################################
 - name: btpsamplescdmsimpleapp
   type: html5
   path: simple.app
@@ -65,6 +41,31 @@ modules:
     - npm install
     - npm run build:cf
     supported-platforms: []
+###########################################################################
+
+# Destination deployer module - create CDM DT destination #################
+- name: btp-samples-cdm-simple-app-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: btp-samples-cdm-simple-app-dest-srv
+    parameters:
+      content-target: true
+  - name: btp-samples-cdm-simple-app-repo-runtime
+    parameters:
+      service-key:
+        name: btp-samples-cdm-simple-app-repo-runtime-key
+  parameters:
+    content:
+      subaccount:
+        destinations:
+        - Name: btp-samples-cdm-simple-app-dt
+          ServiceInstanceName: btp-samples-cdm-simple-app-html5-rt-srv
+          ServiceKeyName: btp-samples-cdm-simple-app-repo-runtime-key
+          URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/btp.samples.cdm.simple.app
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+###########################################################################
 
 resources:
 # HTML5 app-host resource - upload html5 apps #############################
