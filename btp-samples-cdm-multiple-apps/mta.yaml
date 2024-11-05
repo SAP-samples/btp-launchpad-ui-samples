@@ -1,0 +1,159 @@
+_schema-version: "3.2"
+ID: btp-samples-cdm-multiple-apps
+description: BTP Launchpad CDM Samples with Multiple Apps and a Library
+version: 0.0.1
+modules:
+# Destination deployer module - create CDM DT destination ##########
+- name: btp-samples-cdm-multiple-apps-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: btp-samples-cdm-multiple-apps-dest-srv
+    parameters:
+      content-target: true
+  - name: btp-samples-cdm-multiple-apps-repo-runtime
+    parameters:
+      service-key:
+        name: btp-samples-cdm-multiple-apps-repo-runtime-key
+  parameters:
+    content:
+      subaccount:
+        destinations:
+        - Name: btp-samples-cdm-multiple-apps-dt
+          ServiceInstanceName: btp-samples-cdm-multiple-apps-html5-rt-srv
+          ServiceKeyName: btp-samples-cdm-multiple-apps-repo-runtime-key
+          URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/btp.samples.cdm.multiple.apps
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+#######################################################################
+
+# HTML5 app deployer module - store xsuaa, backend destinations
+- name: btp-samples-cdm-multiple-apps-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: btp-samples-cdm-multiple-apps-repo-host
+    parameters:
+      content-target: true
+  - name: btp-samples-cdm-multiple-apps-uaa
+  - name: btp-samples-cdm-multiple-apps-consumed-srv
+  parameters:
+    config:
+      destinations:
+      - name: northwind
+        url: https://services.odata.org/V3/Northwind/Northwind.svc/
+  build-parameters:
+    build-result: resources
+    requires:
+    - name: btpsamplescdmmultipleappsapp1
+      artifacts:
+      - btpsamplescdmmultipleappsapp1.zip
+      target-path: resources/
+    - name: btpsamplescdmmultipleappsapp2
+      artifacts:
+      - btpsamplescdmmultipleappsapp2.zip
+      target-path: resources/
+    - name: btpsamplescdmmultipleappslib
+      artifacts:
+      - btpsamplescdmmultipleappslib.zip
+      target-path: resources/
+########################################################################
+
+# Apps and lib Module ##################################################
+- name: btpsamplescdmmultipleappsapp1
+  type: html5
+  path: app1
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: btpsamplescdmmultipleappsapp2
+  type: html5
+  path: app2
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+- name: btpsamplescdmmultipleappslib
+  type: html5
+  path: lib
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+
+resources:
+# HTML5 app-host resource - upload html5 apps #############################
+- name: btp-samples-cdm-multiple-apps-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: btp-samples-cdm-multiple-apps-html5-srv
+    service-plan: app-host
+###########################################################################
+
+# XSUAA Instance ##########################################################
+- name: btp-samples-cdm-multiple-apps-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+    service-name: btp-samples-cdm-multiple-apps-xsuaa-srv
+###########################################################################
+
+# A consumed business service #############################################
+- name: btp-samples-cdm-multiple-apps-consumed-srv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: btp-samples-consumed-service
+    service-name: btp-samples-cdm-multiple-apps-consumed-srv
+    service-plan: document-service
+###########################################################################
+
+# Destination resource for CDM RT destination #############################
+- name: btp-samples-cdm-multiple-apps-dest-srv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: destination
+    service-name: btp-samples-cdm-multiple-apps-dest-srv
+    service-plan: lite
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        subaccount:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: btp-samples-cdm-multiple-apps-rt
+            ProxyType: Internet
+            Type: HTTP
+            URL: https://uicsconsumertest.launchpad.${default-domain}
+          existing_destinations_policy: update
+      version: 1.0.0
+###########################################################################
+
+# HTML5 app-runtime resource for CDM DT destination ######################
+- name: btp-samples-cdm-multiple-apps-repo-runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: btp-samples-cdm-multiple-apps-html5-rt-srv
+    service-plan: app-runtime
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - mkdir -p resources
+        - cp workzone/cdm.json resources/cdm.json
