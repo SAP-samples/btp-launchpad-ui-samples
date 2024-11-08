@@ -29,8 +29,7 @@
                         "additionalParameters": "allowed"
                     },
                     "semanticObject": "cdmmultipleApp2",
-                    "action": "display",
-                    "icon": ""
+                    "action": "display"
                 }
             }
         }

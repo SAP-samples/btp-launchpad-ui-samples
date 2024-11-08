@@ -21,12 +21,12 @@
         "build:cf": "ui5 build preload --clean-dest --config ui5-deploy.yaml"
     },
     "devDependencies": {
-        "@sap/ux-ui5-tooling": "^1.12.1",
-        "@ui5/cli": "^3.8.0",
-        "@ui5/fs": "^3.0.5",
-        "@ui5/logger": "^3.0.0",
+        "@sap/ux-ui5-tooling": "^1.15.4",
+        "@ui5/cli": "^4.0.9",
+        "@ui5/fs": "^4.0.1",
+        "@ui5/logger": "^4.0.1",
         "rimraf": "5.0.5",
-        "ui5-task-zipper": "^3.1.1"
+        "ui5-task-zipper": "^3.3.1"
     },
     "ui5": {
         "dependencies": [
