@@ -3,7 +3,7 @@
       "_version": "3.0",
       "identification": {
         "entityType": "catalog",
-        "id": "btp.samples.cdm",
+        "id": "btp.samples.cdm.simple.app",
         "title": "{{title}}"
       },
       "payload": {
@@ -18,7 +18,7 @@
         {
           "locale": "",
           "textDictionary": {
-            "title": "BTP Samples - Simple App"
+            "title": "BTP Samples CDM - Simple App"
           }
         }
       ]
@@ -42,7 +42,7 @@
         {
           "locale": "",
           "textDictionary": {
-            "title": "BTP Samples - Simple App"
+            "title": "BTP Samples CDM - Simple App"
           }
         }
       ]
@@ -52,7 +52,7 @@
       "identification": {
         "entityType": "role",
         "id": "btp.samples.cdm",
-        "title": "BTP Samples - Simple App"
+        "title": "BTP Samples CDM - Simple App"
       },
       "payload": {
         "apps": [
@@ -62,7 +62,7 @@
         ],
         "catalogs": [
           {
-            "id": "btp.samples.cdm"
+            "id": "btp.samples.cdm.simple.app"
           }
         ],
         "groups": [
