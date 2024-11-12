@@ -1,5 +1,5 @@
 {
-    "_version": "1.32.0",
+    "_version": "1.60.0",
     "sap.app": {
         "id": "btp.samples.multiple.apps.lib",
         "type": "library",
