@@ -1,0 +1,116 @@
+_schema-version: "3.2"
+ID: btp-samples-cdm-split-mta-shared
+description: BTP Launchpad CDM Samples split to MTAs - Shared Library
+version: 0.0.1
+modules:
+# Destination deployer module - create CDM DT destination ##########
+- name: btp-samples-cdm-split-mta-shared-dest-content
+  type: com.sap.application.content
+  requires:
+  - name: btp-samples-cdm-split-mta-shared-dest-srv
+    parameters:
+      content-target: true
+  - name: btp-samples-cdm-split-mta-repo-runtime
+    parameters:
+      service-key:
+        name: btp-samples-cdm-split-mta-shared-repo-runtime-key
+  parameters:
+    content:
+      subaccount:
+        destinations:
+        - Name: btp-samples-cdm-split-mta-dt
+          ServiceInstanceName: btp-samples-cdm-split-mta-html5-rt-srv
+          ServiceKeyName: btp-samples-cdm-split-mta-repo-runtime-key
+          URL: https://html5-apps-repo-rt.${default-domain}/applications/cdm/btp.samples.cdm.split.mta
+        existing_destinations_policy: ignore
+  build-parameters:
+    no-source: true
+#######################################################################
+
+# HTML5 app deployer module - store xsuaa, backend destinations
+- name: btp-samples-cdm-split-mta-shared-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: btp-samples-cdm-split-mta-shared-repo-host
+    parameters:
+      content-target: true
+  - name: btp-samples-cdm-split-mta-shared-uaa
+  parameters:
+    config:
+      destinations:
+      - name: northwind
+        url: https://services.odata.org/V3/Northwind/Northwind.svc/
+  build-parameters:
+    builder: custom
+    commands:
+        - mkdir -p resources
+        - cp workzone/cdm.json resources/cdm.json
+    build-result: resources
+    requires:
+    - name: btpsamplescdmsplitmtalib
+      artifacts:
+      - btpsamplescdmsplitmtalib.zip
+      target-path: resources/
+- name: btpsamplescdmsplitmtalib
+  type: html5
+  path: lib
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+# HTML5 app-host resource - upload html5 apps #############################
+- name: btp-samples-cdm-split-mta-shared-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+    service-name: btp-samples-cdm-split-mta-shared-html5-srv
+###########################################################################
+
+# XSUAA Instance ##########################################################
+- name: btp-samples-cdm-split-mta-shared-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-plan: application
+    service-name: btp-samples-cdm-split-mta-shared-xsuaa-srv
+###########################################################################
+
+# Destination resource for CDM RT destination #############################
+- name: btp-samples-cdm-split-mta-shared-dest-srv
+  type: org.cloudfoundry.managed-service
+  parameters:
+    config:
+      HTML5Runtime_enabled: true
+      init_data:
+        subaccount:
+          destinations:
+          - Authentication: NoAuthentication
+            Name: btp-samples-cdm-split-mta-rt
+            ProxyType: Internet
+            Type: HTTP
+            # TODO Replace the placeholder {YOURDOMAIN} with the subdomain of the target subaccount
+            URL: https://{YOURDOMAIN}.launchpad.${default-domain}
+          existing_destinations_policy: update
+      version: 1.0.0
+    service: destination
+    service-name: btp-samples-cdm-split-mta-shared-dest-srv
+    service-plan: lite
+###########################################################################
+
+# HTML5 app-runtime resource for CDM DT destination ######################
+- name: btp-samples-cdm-split-mta-repo-runtime
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-name: btp-samples-cdm-split-mta-html5-rt-srv
+    service-plan: app-runtime
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

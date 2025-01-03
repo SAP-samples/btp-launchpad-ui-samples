@@ -22,7 +22,7 @@
         {
           "locale": "",
           "textDictionary": {
-            "title": "BTP Samples - Multiple Apps"
+            "title": "BTP CDM Samples - Multiple Apps"
           }
         }
       ]
@@ -50,7 +50,7 @@
         {
           "locale": "",
           "textDictionary": {
-            "title": "BTP Samples - Multiple Apps"
+            "title": "BTP CDM Samples - Multiple Apps"
           }
         }
       ]
@@ -60,7 +60,7 @@
       "identification": {
         "entityType": "role",
         "id": "btp.samples.cdm",
-        "title": "BTP Samples - Multiple Apps"
+        "title": "BTP CDM Samples - Multiple Apps"
       },
       "payload": {
         "apps": [

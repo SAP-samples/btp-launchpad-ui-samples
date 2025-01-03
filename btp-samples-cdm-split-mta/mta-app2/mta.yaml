@@ -1,0 +1,66 @@
+_schema-version: "3.2"
+ID: btp-samples-cdm-split-mta-app2
+description: BTP Launchpad CDM Samples split to MTAs - App2
+version: 0.0.1
+modules:
+# HTML5 app deployer module - store xsuaa, backend destinations
+- name: btp-samples-cdm-split-mta-app2-app-content
+  type: com.sap.application.content
+  path: .
+  requires:
+  - name: btp-samples-cdm-split-mta-app2-repo-host
+    parameters:
+      content-target: true
+  - name: btp-samples-cdm-split-mta-shared-repo-host
+  - name: btp-samples-cdm-split-mta-shared-uaa
+  parameters:
+    config:
+      destinations:
+      - name: northwind
+        url: https://services.odata.org/V3/Northwind/Northwind.svc/
+  build-parameters:
+    builder: custom
+    commands:
+        - mkdir -p resources
+        - cp workzone/cdm.json resources/cdm.json
+    build-result: resources
+    requires:
+    - name: btpsamplescdmsplitmtaapp2
+      artifacts:
+      - btpsamplescdmsplitmtaapp2.zip
+      target-path: resources/
+- name: btpsamplescdmsplitmtaapp2
+  type: html5
+  path: app2
+  build-parameters:
+    build-result: dist
+    builder: custom
+    commands:
+    - npm install
+    - npm run build:cf
+    supported-platforms: []
+resources:
+# HTML5 app-host resource - upload html5 apps #############################
+- name: btp-samples-cdm-split-mta-app2-repo-host
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: html5-apps-repo
+    service-plan: app-host
+    service-name: btp-samples-cdm-split-mta-app2-html5-srv
+###########################################################################
+
+# Reference to shared app-host  ###########################################
+- name: btp-samples-cdm-split-mta-shared-repo-host
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: btp-samples-cdm-split-mta-shared-html5-srv
+###########################################################################
+
+# Reference to shared XSUAA Instance ######################################
+- name: btp-samples-cdm-split-mta-shared-uaa
+  type: org.cloudfoundry.existing-service
+  parameters:
+    service-name: btp-samples-cdm-split-mta-shared-xsuaa-srv
+parameters:
+  deploy_mode: html5-repo
+  enable-parallel-deployments: true

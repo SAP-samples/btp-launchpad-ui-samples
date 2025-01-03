@@ -43,6 +43,10 @@ modules:
       - name: northwind
         url: https://services.odata.org/V3/Northwind/Northwind.svc/
   build-parameters:
+    builder: custom
+    commands:
+        - mkdir -p resources
+        - cp workzone/cdm.json resources/cdm.json
     build-result: resources
     requires:
     - name: btpsamplescdmmultipleappsapp1
@@ -136,7 +140,8 @@ resources:
             Name: btp-samples-cdm-multiple-apps-rt
             ProxyType: Internet
             Type: HTTP
-            URL: https://uicsconsumertest.launchpad.${default-domain}
+            # TODO Replace the placeholder {YOURDOMAIN} with the subdomain of the target subaccount
+            URL: https://{YOURDOMAIN}.launchpad.${default-domain}
           existing_destinations_policy: update
       version: 1.0.0
 ###########################################################################
@@ -151,9 +156,3 @@ resources:
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true
-build-parameters:
-  before-all:
-    - builder: custom
-      commands:
-        - mkdir -p resources
-        - cp workzone/cdm.json resources/cdm.json

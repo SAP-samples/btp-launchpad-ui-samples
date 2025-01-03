@@ -1,0 +1,67 @@
+[
+    {
+      "_version": "3.0",
+      "identification": {
+        "entityType": "catalog",
+        "id": "btp.samples.cdm.split.mta",
+        "title": "{{title}}"
+      },
+      "payload": {
+        "viz": [
+          {
+            "appId": "btp.samples.cdm.split.mta.app1",
+            "vizId": "btp-samples-cdm-split-mta-app1-inbound"
+          }
+        ]
+      },
+      "texts": [
+        {
+          "locale": "",
+          "textDictionary": {
+            "title": "BTP CDM Samples - Split MTA"
+          }
+        }
+      ]
+    },
+    {
+      "_version": "3.0",
+      "identification": {
+        "entityType": "group",
+        "id": "btp.samples.cdm.split.mta",
+        "title": "{{title}}"
+      },
+      "payload": {
+        "viz": [
+          {
+            "appId": "btp.samples.cdm.split.mta.app1",
+            "vizId": "btp-samples-cdm-split-mta-app1-inbound"
+          }
+        ]
+      },
+      "texts": [
+        {
+          "locale": "",
+          "textDictionary": {
+            "title": "BTP CDM Samples - Split MTA"
+          }
+        }
+      ]
+    },
+    {
+      "_version": "3.0",
+      "identification": {
+        "entityType": "role",
+        "id": "btp.samples.cdm.split.mta",
+        "title": "BTP CDM Samples - Split MTA"
+      },
+      "payload": {
+        "apps": [
+          {
+            "id": "btp.samples.cdm.split.mta.app1"
+          }
+        ],
+        "catalogs": [],
+        "groups": []
+      }
+    }
+  ]

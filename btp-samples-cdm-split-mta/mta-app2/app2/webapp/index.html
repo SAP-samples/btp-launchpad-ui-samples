@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Multiple Apps - App 2</title>
+
+	<script id="sap-ui-bootstrap"
+			src="https://ui5.sap.com/resources/sap-ui-cachebuster/sap-ui-core.js"
+			data-sap-ui-theme="sap_fiori_3"
+			data-sap-ui-resourceroots='{
+				"btp.samples.cdm.split.mta.app2": "./"
+			}'
+            data-sap-ui-libraries="sap.m"
+            data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
+			data-sap-ui-compatVersion="edge"
+			data-sap-ui-async="true"
+			data-sap-ui-preload="async"
+			data-sap-ui-frameOptions="trusted">
+	</script>
+    <script>
+        let parts = window.location.pathname.split('/');
+        let destinationGuid = (parts.length > 2) ?  parts[1].split(".")[0] + "." : "";
+        sap.ui.loader.config({paths:{"btp/samples/cdm/split/mta/lib": `/${destinationGuid}btpsamplescdmsplitmta.btpsamplescdmsplitmtalib`}});
+    </script>
+</head>
+<body class="sapUiBody">
+	<div data-sap-ui-component data-name="btp.samples.cdm.split.mta.app2" data-id="container" data-settings='{"id" : "app.container"}'></div>
+</body>
+</html>
