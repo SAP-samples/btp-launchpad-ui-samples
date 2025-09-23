@@ -18,7 +18,7 @@ To deploy the consumed sample service (required for split destination scenario):
 - npm install
 - npm run build:mta
 - npm run deploy
-- cf create-service-broker btp-samples-consumed-service brokerUser business_service_broker_password https://btp-samples-consumed-service-broker.cfapps.<Your Landscape domain>.hana.ondemand.com --space-scoped 
+- cf create-service-broker btp-samples-consumed-service brokerUser business_service_broker_password https://btp-samples-consumed-service-broker.cfapps.<Your Landscape domain\>.hana.ondemand.com --space-scoped 
 
 To deploy one of the samples to your space:
 - Login to cf cli
