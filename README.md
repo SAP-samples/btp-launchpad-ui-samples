@@ -23,7 +23,7 @@ To deploy the consumed sample service (required for split destination scenario):
 To deploy one of the samples to your space:
 - Login to cf cli
 - Go to a samples directory
-- If the mta.yaml file contains a placeholder {YOURDOMAIN}, replace it with the subdomain of the target subaccount
+- If the mta.yaml file contains a placeholder {YOURDOMAIN}, replace it with the subdomain of the subaccount where you deploy to
 - npm install
 - npm run build:mta
 - npm run deploy
