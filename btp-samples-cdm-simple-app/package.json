@@ -8,8 +8,8 @@
         "undeploy": "cf undeploy btp-samples-cdm-simple-app --delete-services --delete-service-keys"
     },
     "devDependencies": {
-        "rimraf": "5.0.5",
+        "rimraf": "6.0.1",
         "mbt": "^1.2.33",
-        "@sap/ux-ui5-tooling": "1.19.1"
+        "@sap/ux-ui5-tooling": "1.19.3"
     }
 }
