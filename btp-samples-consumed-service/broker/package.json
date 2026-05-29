@@ -6,7 +6,7 @@
       "start": "start-broker"
     },
     "dependencies": {
-      "@sap/sbf": "^6.11.4"
+      "@sap/sbf": "^6.11.5"
     },
     "engines": {
       "node": "^20"
