@@ -13,7 +13,7 @@
         "undeploy": "cf undeploy btp-samples-split-mta-app2 --delete-services --delete-service-keys"
     },
     "devDependencies": {
-        "rimraf": "6.0.1",
+        "rimraf": "^6.1.3",
         "mbt": "^1.2.45"
     }
 }
